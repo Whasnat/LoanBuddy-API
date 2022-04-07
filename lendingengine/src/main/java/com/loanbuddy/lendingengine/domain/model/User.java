@@ -1,8 +1,14 @@
 package com.loanbuddy.lendingengine.domain.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
 
+@Entity
 public class User {
+
+	@Id
+	private long userId;
 	private String firstName;
 	private String lastName;
 	private int age;
