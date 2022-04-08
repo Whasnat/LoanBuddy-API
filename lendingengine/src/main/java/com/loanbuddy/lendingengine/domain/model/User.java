@@ -17,7 +17,8 @@ public class User {
 	public User() {
 	}
 
-	public User(String firstName, String lastName, int age, String profession) {
+	public User(long userId, String firstName, String lastName, int age, String profession) {
+		this.userId = userId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.age = age;
