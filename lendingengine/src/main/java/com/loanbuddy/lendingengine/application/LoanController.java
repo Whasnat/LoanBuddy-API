@@ -7,19 +7,16 @@ import com.loanbuddy.lendingengine.domain.repository.LoanApplicationRepository;
 import com.loanbuddy.lendingengine.domain.repository.UserRepository;
 import com.loanbuddy.lendingengine.domain.service.LoanApplicationAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 public class LoanController {
 
-	private final LoanApplicationRepository loanApplicationRepository;
-	private final UserRepository userRepository;
-	private final LoanApplicationAdapter loanApplicationAdapter;
+	private LoanApplicationRepository loanApplicationRepository;
+	private UserRepository userRepository;
+	private LoanApplicationAdapter loanApplicationAdapter;
 
 	@Autowired
 	public LoanController(LoanApplicationRepository loanApplicationRepository, UserRepository userRepository, LoanApplicationAdapter loanApplicationAdapter) {
@@ -29,10 +26,21 @@ public class LoanController {
 	}
 
 	@PostMapping(value = "/loan/request")
-	public void requestLoan(@RequestBody final LoanRequest loanRequest) {
+	public void requestLoan(@RequestBody LoanRequest loanRequest) {
 		loanApplicationRepository.save(loanApplicationAdapter.transform(loanRequest));
 
-//		System.out.println(loanRequest.toString());
+		System.out.println(loanRequest.toString());
+	}
+
+	@GetMapping(value = "/loan/requests")
+	public List<LoanApplication> findAllLoanRequests() {
+		return loanApplicationRepository.findAll();
+	}
+
+	@PostMapping(value = "/loan/accept/{lender_userId}/{loanApplicationId}")
+	public void acceptLoan(@PathVariable final String lender_userId,
+	                       @PathVariable final String loanApplicationId) {
+
 	}
 
 	@GetMapping(value = "/users")

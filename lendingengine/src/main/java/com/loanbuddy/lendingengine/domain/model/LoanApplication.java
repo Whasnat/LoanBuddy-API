@@ -1,6 +1,7 @@
 package com.loanbuddy.lendingengine.domain.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import java.time.Duration;
@@ -10,19 +11,20 @@ import java.util.Objects;
 public class LoanApplication {
 
 	@Id
+	@GeneratedValue
 	private long id;
 
 	@ManyToOne
-    private  User taker;
+	private User taker;
 
-	private  int amount;
-	private  Duration repaymentTerm;
-	private  double interestRate;
+	private int amount;
+	private int repaymentTerm;
+	private double interestRate;
 
 	public LoanApplication() {
 	}
 
-	public LoanApplication(int amount, User taker, Duration repaymentTerm, double interestRate) {
+	public LoanApplication(int amount, User taker, int repaymentTerm, double interestRate) {
 		this.amount = amount;
 		this.taker = taker;
 		this.repaymentTerm = repaymentTerm;
@@ -37,7 +39,7 @@ public class LoanApplication {
 		return taker;
 	}
 
-	public Duration getRepaymentTerm() {
+	public int getRepaymentTerm() {
 		return repaymentTerm;
 	}
 

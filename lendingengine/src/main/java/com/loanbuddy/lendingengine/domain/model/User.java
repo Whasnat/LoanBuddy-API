@@ -1,7 +1,11 @@
 package com.loanbuddy.lendingengine.domain.model;
 
+import io.micrometer.core.lang.NonNull;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.UniqueConstraint;
 import java.util.Objects;
 
 @Entity
