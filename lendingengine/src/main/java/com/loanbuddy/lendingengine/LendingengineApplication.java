@@ -20,6 +20,6 @@ public class LendingengineApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		userRepository.save(new User(1,"Rahat", "Wasnat", 28,"Web Developer" ));
-		userRepository.save(new User(1,"Meenu", "Pagli", 22,"Student" ));
+		userRepository.save(new User(2,"Meenu", "Pagli", 22,"Student" ));
 	}
 }
