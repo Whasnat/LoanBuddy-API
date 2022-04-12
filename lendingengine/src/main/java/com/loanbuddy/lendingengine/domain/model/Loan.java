@@ -21,6 +21,7 @@ public class Loan{
 	private LocalDate startDate;
 	private LocalDate endDate;
 
+	// This is the default constructor
 	public Loan() {
 	}
 
